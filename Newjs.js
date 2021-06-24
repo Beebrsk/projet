@@ -1,7 +1,7 @@
 function onLoad(){
     document.getElementById('searchButton').addEventListener('click',searchAnime)
 }
-
+//----------     เริ่มค้นหาจากapi  ----------------------//
 function searchAnime(event)
 {
     opensearch()
@@ -18,7 +18,7 @@ function searchAnime(event)
         console.warn(err.message)
     })
 }
-
+//----------  หลังจากดึงข้อมูลเสร็จก็เอามาใส่ในการ์ด     ----------------------//
 function addAnimeToCard(anime){
     const searchList= document.getElementById('searchList')
     let card = document.createElement('div')
@@ -38,7 +38,7 @@ function addAnimeToCard(anime){
     
 }
 
-
+//---------- ใช้ตกลง      ----------------------//
 function addToFavAnime(){
     let answer = confirm('Are you sure')
     console.log(answer)
@@ -49,7 +49,7 @@ function addToFavAnime(){
     }
                      
 }
-
+//----------   ปิดหน้าข้อมูลค้นหา    ----------------------//
 function closesearch(){
     document.getElementById('searchList').style.display='none'      
 }
@@ -71,7 +71,7 @@ document.getElementById('myListnav').addEventListener('click',function(){
 })
 
 
-
+//----------  เพิ่มข้อมูลเข้าdata     ----------------------//
 function addAnimeToData(anime) {
     
     fetch(`https://se104-project-backend.du.r.appspot.com/movies`, {
@@ -95,23 +95,6 @@ function addAnimeToData(anime) {
     })
 }
 
-
-function searchmylist(event)
-{
-    opensearch()
-    let query = document.getElementById('searchInput').value
-    fetch(`https://api.jikan.moe/v3/search/anime?q=${query}`,)
-    .then ((response) =>{
-        return response.json()
-    }).then((data) => {
-        data.results.map((element) =>{
-            console.log(element)
-            addAnimeToCard(element)
-        })
-    }).catch((err) => {
-        console.warn(err.message)
-    })
-}
 
 
 
