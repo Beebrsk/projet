@@ -38,7 +38,7 @@ body
   }
   /* CSS VARIABLES */
 :root {
-    --primary: #141414;
+    --primary: #221F1F;
     --light: #F3F3F3;
     --dark: 	#686868;
   }
@@ -83,19 +83,6 @@ body
     margin-bottom: 0px;  
   }
   
-  .netflixLogo {
-    grid-area: nt;
-    object-fit: cover;
-    width: 100px;
-    max-height: 100%;
-    
-    padding-left: 30px;
-    padding-top: 0px;  
-  }
-  
-  .netflixLogo img {  
-    height: 35px;     
-  }
   
   #logo {
     color: #E50914;  
@@ -139,7 +126,7 @@ body
   .main-container {
     padding: 50px;
   }
-  
+  /**
   .box {
     display: grid;
     grid-gap: 20px;
@@ -193,14 +180,14 @@ body
   }
   
   
-  /* FOOTER */
+  /* 
   footer {
     padding: 20px;
     text-align: center;
     color: var(--dark);
     margin: 10px;
   }
-  
+  FOOTER */
   /* MEDIA QUERIES */
   
   @media(max-width: 900px) {
@@ -284,9 +271,26 @@ body
       text-align: center;
       font-size: 18px;
     }
+}
+
+.searchContent{
+    display: flex; 
+    flex-wrap: wrap; 
+    justify-content: space-around;
+    margin: 100px;
+    background-color: #221F1F;
+}
+.searchContent div{
+    
+
+    background-color: #221F1F;
+    margin: 50PX;
+    text-align: center;
+    justify-content: space-between;
+}
   
    
-  
+  /**
     .box {
       display: grid;
       grid-gap: 20px;
@@ -314,10 +318,4 @@ body
       grid-template-columns: repeat(1, 1fr);
       text-align: center;
       font-size: 15px;
-    }
-  
-    
-  
-    
-     
-  }
+    }**/

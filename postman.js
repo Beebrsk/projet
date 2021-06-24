@@ -1,5 +1,6 @@
 function searchAnime(event)
 {
+    
     let query = document.getElementById('searchInput').value
     fetch(`https://api.jikan.moe/v3/search/anime?q=${query}`,)
     .then ((response) =>{
@@ -26,7 +27,7 @@ function addAnimeToData(anime) {
 
 function addAnimeToCard(anime){
     const searchList= document.getElementById('searchList')
-    let row = document.createElement('row')
+    let col = document.createElement('col')
     let card = document.createElement('div')
     let img = document.createElement('img')
     img.setAttribute('src',anime.image_url)
