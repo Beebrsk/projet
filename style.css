@@ -272,7 +272,16 @@ body
       font-size: 18px;
     }
 }
-
+.searchcard{
+  
+  background-color: #5c5858;
+    margin: 10px;
+    text-align: center;
+    justify-content: space-between;
+    height: max-content;
+    width: 200px;
+}
+ 
 .searchContent{
     display: flex; 
     flex-wrap: wrap; 
@@ -280,17 +289,20 @@ body
     margin: 100px;
     background-color: #221F1F;
 }
+/**
 .searchContent div{
-    
 
-    background-color: #221F1F;
-    margin: 50PX;
-    text-align: center;
-    justify-content: space-between;
+    
+}
+.searchContent h5{
+background-color: #E50914;
+}
+.h5{
+  tex
 }
   
    
-  /**
+ 
     .box {
       display: grid;
       grid-gap: 20px;
