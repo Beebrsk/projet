@@ -88,6 +88,11 @@ document.getElementById('myListnav').addEventListener('click', function () {
     openmylist()
 
 })
+document.getElementById('homeNav').addEventListener('click', function () {
+    closesearch()
+    closemylist()
+
+})
 
 function showMyList() {
     fetch('https://se104-project-backend.du.r.appspot.com/movies/632110344', {
