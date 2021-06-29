@@ -131,3 +131,32 @@ body
     margin: 100px;
     background-color: #221F1F;
 }
+
+.Favlist{
+  background-color: #5c5858;
+    margin: 10px;
+    text-align: center;
+    justify-content: space-between;
+    height: max-content;
+    width: 200px;
+}
+
+.Favlist img{
+  height: 300px;
+}
+.Favlist button{
+  height: 30px;
+  width: 90px;
+  color: white;
+  background-color: #E50914;
+  border: none;
+  margin-bottom: 10px;
+}
+
+.mylistContent{
+  display: flex; 
+  flex-wrap: wrap; 
+  justify-content: space-around;
+  margin: 100px;
+  background-color: #221F1F;
+}
