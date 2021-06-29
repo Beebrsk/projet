@@ -92,14 +92,16 @@ function delAnime(anime) {
     if (answer == true) {
         fetch( `https://se104-project-backend.du.r.appspot.com/movie?id=632110344&&movieId=${anime.id}`,{
          method: 'DELETE' 
-        }).then(response => { 
+        }).then(response => {
+        location.reload();  
         if (response.status === 200){ 
             return response.json() 
+            
         }
         else{
              throw Error(response.text) }
         })
-        location.reload();       
+              
     }
 
 }
@@ -138,6 +140,7 @@ function showMyList() {
     }).then((response) => {
         return response.json()
     }).then(data => {
+            
             data.map((val) => {
                 showcontentAdd(val)
                 
