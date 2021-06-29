@@ -44,18 +44,17 @@ function addAnimeToCard(anime) {
 //---------------------เเสดงlist------------------------------------//
 function showcontentAdd(list) {
     output2.innerHTML += `
-        <div class="Favlist ">
+        <div class="Favlist">
             <div class="list">
                 <img src="${list.image_url}">
-                <h1>${list.title}</h1>
+                <h5>${list.title}</h5>
+            </div>
+            <button id="detailBtn" style="background-color: #ADADAD;" type="button" class="btn-like flex-btn" onclick="fetch_post(${list.mal_id} ,'${list.title}')">Detail</button>
             
-            <button type="button" class="btn-like flex-btn" onclick="fetch_post(${list.mal_id} ,'${list.title}')">
-            <div class="icon-btn">
-              <i class='bx bxs-heart i-btn-style'></i>
-            </div>
-            <div class="btn-addlist">
-              add to list
-            </div>
+            <button id="deleteBtn" type="button" class="btn-like flex-btn" onclick="fetch_post(${list.mal_id} ,'${list.title}')">delete</button>
+            <h5 id="detail" style="margin: 10px;">${list.synopsis}</h5>
+            
+            
      </div>
      `
 }
