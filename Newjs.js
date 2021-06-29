@@ -3,6 +3,8 @@ console.log(show_content.innerHTML);
 
 function onLoad() {
     document.getElementById('searchButton').addEventListener('click', searchAnime)
+    showMyList()
+    closemylist()
 }
 //----------     เริ่มค้นหาจากapi  ----------------------//
 function searchAnime(event) {
@@ -42,12 +44,19 @@ function addAnimeToCard(anime) {
 //---------------------เเสดงlist------------------------------------//
 function showcontentAdd(list) {
     output2.innerHTML += `
-        <div class="">
-            <div class="">
+        <div class="Favlist ">
+            <div class="list">
                 <img src="${list.image_url}">
                 <h1>${list.title}</h1>
+            
+            <button type="button" class="btn-like flex-btn" onclick="fetch_post(${list.mal_id} ,'${list.title}')">
+            <div class="icon-btn">
+              <i class='bx bxs-heart i-btn-style'></i>
             </div>
-        </div>
+            <div class="btn-addlist">
+              add to list
+            </div>
+     </div>
      `
 }
 //---------- ใช้ตกลง      ----------------------//
@@ -67,11 +76,17 @@ function closesearch() {
 }
 function opensearch() {
     document.getElementById('searchList').style.display = 'flex'
-
-
+}
+function closemylist() {
+    document.getElementById('output2').style.display = 'none'
+}
+function openmylist() {
+    document.getElementById('output2').style.display = 'flex'
 }
 document.getElementById('myListnav').addEventListener('click', function () {
     closesearch()
+    openmylist()
+
 })
 
 function showMyList() {
