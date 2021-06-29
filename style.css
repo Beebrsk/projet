@@ -141,16 +141,15 @@ body
     width: 200px;
 }
 
-.Favlist img{
-  height: 300px;
-}
-.Favlist button{
+
+.searchcard button{
   height: 30px;
   width: 90px;
   color: white;
   background-color: #E50914;
   border: none;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
+  margin-right: 5px;
 }
 
 .mylistContent{

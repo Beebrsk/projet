@@ -24,6 +24,7 @@ function searchAnime(event) {
 }
 //----------  หลังจากดึงข้อมูลเสร็จก็เอามาใส่ในการ์ด     ----------------------//
 function addAnimeToCard(anime) {
+    
     const searchList = document.getElementById('searchList')
     let card = document.createElement('div')
     card.classList.add("searchcard")
@@ -39,37 +40,65 @@ function addAnimeToCard(anime) {
 
     card.appendChild(titleAnime)
     searchList.appendChild(card)
+    
 
 }
 //---------------------เเสดงlist------------------------------------//
-function showcontentAdd(list) {
-    output2.innerHTML += `
-        <div class="Favlist">
-            <div class="list">
-                <img src="${list.image_url}">
-                <h5>${list.title}</h5>
-            </div>
-            <button id="detailBtn" style="background-color: #ADADAD;" type="button" class="btn-like flex-btn" onclick="fetch_post(${list.mal_id} ,'${list.title}')">Detail</button>
-            
-            <button id="deleteBtn" type="button" class="btn-like flex-btn" onclick="fetch_post(${list.mal_id} ,'${list.title}')">delete</button>
-            <h5 id="detail" style="margin: 10px;">${list.synopsis}</h5>
-            
-            
-     </div>
-     `
+function showcontentAdd(anime) {
+    const searchList = document.getElementById('output2')
+    let card = document.createElement('div')
+    card.classList.add("searchcard")
+    let img = document.createElement('img')
+    img.style.height = "300px"
+    img.setAttribute('src', anime.image_url)
+
+    let detailbtn = document.createElement('button')
+    detailbtn.innerHTML = 'Detail'
+    detailbtn.style="margin-left: 5px;background-color: #858585;"
+    detailbtn.addEventListener('click', function () {
+        alert(anime.title +"\nDetail : "+ anime.synopsis)
+    })
+    let deletebtn = document.createElement('button')
+    deletebtn.innerHTML = 'Delete'
+    deletebtn.addEventListener('click', function () {
+        delAnime(anime)
+    })
+
+    card.appendChild(img)
+    let titleAnime = document.createElement('h5')
+    titleAnime.innerHTML = `${anime.title}`
+
+    card.appendChild(titleAnime)
+    card.appendChild(detailbtn)
+    card.appendChild(deletebtn)
+    searchList.appendChild(card)
+    
 }
-//---------- ใช้ตกลง      ----------------------//
+//---------- ใช้ตกลงเพิ่ม      ----------------------//
 function addToFavAnime(anime) {
-    let answer = confirm('Are you sure')
+    let answer = confirm('Do you want to add '+anime.title+' to my list')
     console.log(answer)
     if (answer == true) {
         console.log('gogo')
         closesearch()
+        openmylist()
         addAnimeToData(anime)
     }
 
 }
-//----------   ปิดหน้าข้อมูลค้นหา    ----------------------//
+
+//---------- ใช้ตกลงลบ      ----------------------//
+function delAnime(anime) {
+    let answer = confirm('Do you want to delete '+anime.title+' from my list')
+    console.log(answer)
+    if (answer == true) {
+        
+    }
+
+}
+
+//----------   เปิดปิดหน้าต่างต่างๆ   ----------------------//
+
 function closesearch() {
     document.getElementById('searchList').style.display = 'none'
 }
@@ -82,9 +111,11 @@ function closemylist() {
 function openmylist() {
     document.getElementById('output2').style.display = 'flex'
 }
+
 document.getElementById('myListnav').addEventListener('click', function () {
     closesearch()
     openmylist()
+    
 
 })
 document.getElementById('homeNav').addEventListener('click', function () {
@@ -102,21 +133,12 @@ function showMyList() {
         }).then(data => {
             data.map((val) => {
                 showcontentAdd(val)
+                
             });
         })
 }
 
-function getdetail(id) {
-    fetch(`https://se104-project-backend.du.r.appspot.com/movie/632110342/${id}`)
-        .then((response) => {
-            return response.json()
-        }).then(data => {
-            const detail = document.getElementById('Detail')
-            detail.innerHTML = ''
-            showDet()
-            showDetail(data);
-        })
-}
+
 
 //----------  เพิ่มข้อมูลเข้าdata     ----------------------//
 function addAnimeToData(anime) {
