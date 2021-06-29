@@ -1,10 +1,7 @@
-var show_content = document.getElementById('outputmylist');
-console.log(show_content.innerHTML);
 
 function onLoad() {
-    document.getElementById('searchButton').addEventListener('click', searchAnime)
     showMyList()
-    closemylist()
+    
 }
 //----------     เริ่มค้นหาจากapi  ----------------------//
 function searchAnime(event) {
@@ -45,6 +42,7 @@ function addAnimeToCard(anime) {
 }
 //---------------------เเสดงlist------------------------------------//
 function showcontentAdd(anime) {
+    
     const searchList = document.getElementById('output2')
     let card = document.createElement('div')
     card.classList.add("searchcard")
@@ -92,7 +90,16 @@ function delAnime(anime) {
     let answer = confirm('Do you want to delete '+anime.title+' from my list')
     console.log(answer)
     if (answer == true) {
-        
+        fetch( `https://se104-project-backend.du.r.appspot.com/movie?id=632110344&&movieId=${anime.id}`,{
+         method: 'DELETE' 
+        }).then(response => { 
+        if (response.status === 200){ 
+            return response.json() 
+        }
+        else{
+             throw Error(response.text) }
+        })
+        location.reload();       
     }
 
 }
@@ -111,8 +118,9 @@ function closemylist() {
 function openmylist() {
     document.getElementById('output2').style.display = 'flex'
 }
+document.getElementById('searchButton').addEventListener('click', searchAnime)
 
-document.getElementById('myListnav').addEventListener('click', function () {
+document.getElementById('myListnav').addEventListener('click', function(){
     closesearch()
     openmylist()
     
@@ -127,10 +135,9 @@ document.getElementById('homeNav').addEventListener('click', function () {
 function showMyList() {
     fetch('https://se104-project-backend.du.r.appspot.com/movies/632110344', {
         method: 'get'
-    })
-        .then((response) => {
-            return response.json()
-        }).then(data => {
+    }).then((response) => {
+        return response.json()
+    }).then(data => {
             data.map((val) => {
                 showcontentAdd(val)
                 
@@ -169,7 +176,7 @@ function addAnimeToData(anime) {
             throw Error(response.statusText)
         }
     }).then(data => {
-        showMyList();
+        location.reload();
     })
 }
 
